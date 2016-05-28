@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>File upload Node.</title>
+</head>
+
+<body>
+    <form id="uploadForm" enctype="multipart/form-data" action="/file/upload" method="post">
+        <input type="file" name="userPhoto" multiple />
+        <input type="submit" value="Upload Image" name="submit">
+        <input type='text' id='random' name='random'>
+        <br>
+        <span id="status"></span>
+    </form>
+    <script src="/javascripts/jquery-1.12.4.min.js"></script>
+    <script src="/javascripts/jquery.form.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#uploadForm').submit(function() {
+                $("#status").empty().text("File is uploading...");
+                $(this).ajaxSubmit({
+                    error: function(xhr) {
+                        $("#status").empty().text('Error: ' + xhr.status);
+                    },
+                    success: function(response) {
+                        console.log(response)
+                        $("#status").empty().text(response);
+                    }
+                });
+                return false;
+            });
+        });
+    </script>
+</body>
+
+</html>
