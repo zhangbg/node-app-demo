@@ -3,15 +3,16 @@ var router = express.Router();
 var fs = require('fs');
 var multer = require('multer');
 
-/* GET users listing. */
 router.get('/', function(req, res, next) {
     res.send('respond with the file resource');
 });
 
+//donwload css with alias.
 router.get('/downloadcss', function(req, res) {
     res.download('../public/stylesheets/style.css', 'downloadcss.css');
 });
 
+//create new file by the request params.
 router.get('/newfile/:content', function(req, res) {
     var content = req.params.content;
     fs.writeFile('../temp/newfile' + new Date().getTime() + '.txt', content, function(err) {
@@ -21,6 +22,7 @@ router.get('/newfile/:content', function(req, res) {
     });
 });
 
+//create new csv file and send the content back.
 router.get('/cvs', function(req, res) {
     var content = [
             ['col1', 'col2'],
@@ -41,7 +43,7 @@ router.get('/cvs', function(req, res) {
     });
 });
 
-
+//use the multer to upload the file.
 var storage = multer.diskStorage({
     destination: function(req, file, cb) {
         cb(null, '../temp/uploads');

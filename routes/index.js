@@ -17,6 +17,7 @@ router.get('/list', function(req, res) {
     res.send('list the data by paging.');
 });
 
+//search the users by elasticsearch
 router.get('/users', function(req, res) {
     var client = elasticsearch.Client({
         host: 'localhost:9200'
