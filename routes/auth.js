@@ -14,7 +14,7 @@ router.get('/', function(req, res, next) {
 // LDAP_DOMAIN = 'light.com'
 router.get('/ldap', function(req, res) {
     var client = ldap.createClient({
-        url: 'ldap://10.200.200.23:389/OU=light-members,DC=light,DC=com'
+        url: 'ldap://10.200.123.23:389/OU=light-members,DC=light,DC=com'
     });
 
     client.compare('OU=light-members,DC=light,DC=com', 'mail', 'libill@light.com', function(err, matched) {
