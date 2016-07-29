@@ -9,7 +9,7 @@ router.get('/', function(req, res, next) {
 });
 
 //authentication by ldap
-// LDAP_HOST = '10.200.200.23'
+// LDAP_HOST = '10.200.123.23'
 // LDAP_BASE_DN = 'OU=light-members,DC=light,DC=com'
 // LDAP_DOMAIN = 'light.com'
 router.get('/ldap', function(req, res) {
